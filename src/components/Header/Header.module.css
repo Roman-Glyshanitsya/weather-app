@@ -1,0 +1,120 @@
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.logo {
+    width: 34px;
+    height: 22px;
+}
+
+.mobileMenuButton {
+    color: #000;
+    font-family: "Montserrat Alternates";
+    font-size: 10px;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.mobileMenuIcon {
+    margin-left: 5px;
+}
+
+.mobileMenuContainer {
+    position: absolute;
+    top: 50px;
+    left: -50px;
+    width: 100vw;
+    padding: 30px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E6E6E6;
+    outline: 1px solid red;
+}
+
+.headerList {}
+
+.headerItem {
+    color: #000;
+    font-family: "Montserrat Alternates";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.headerItem:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 15px;
+}
+
+.button {
+    color: #000;
+    font-family: "Montserrat Alternates";
+    font-size: 10px;
+    font-weight: 400;
+
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: #FFB36C;
+}
+
+.iconUser {
+    width: 40px;
+    height: 40px;
+    color: #556080;
+}
+
+@media screen and (min-width: 768px) {
+    .header {}
+
+    .logo {
+        width: 54px;
+        height: 36px;
+    }
+
+    .headerList {
+        display: flex;
+        gap: 45px;
+        align-items: center;
+    }
+
+    .headerItem {
+        font-family: "Montserrat Alternates", sans-serif;
+        font-size: 12px;
+
+        font-weight: 500;
+    }
+
+    .button {}
+
+    .iconUser {}
+}
+
+@media screen and (min-width: 1200px) {
+    .header {}
+
+    .logo {
+        width: 82px;
+        height: 56px;
+    }
+
+    .headerList {}
+
+    .headerItem {}
+
+    .button {}
+
+    .iconUser {}
+}
