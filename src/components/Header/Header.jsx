@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <header className={s.header}>
       <img className={s.logo} src={logo} alt="logo" />
-      {/* <div className={s.mobileMenuContainer}>
+      <div className={s.mobileMenuContainer}>
         <ul className={s.headerList}>
           <li className={s.headerItem}>Who we are</li>
           <li className={s.headerItem}>Contacts</li>
@@ -19,7 +19,7 @@ export const Header = () => {
           </button>
           <FaCircleUser className={s.iconUser} />
         </div>
-      </div> */}
+      </div>
       <button className={s.mobileMenuButton} type="button">
         Menu
         <svg
