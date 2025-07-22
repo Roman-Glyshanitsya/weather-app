@@ -12,72 +12,20 @@
     height: 22px;
 }
 
-.mobileMenuButton {
-    color: #000;
-    font-family: "Montserrat Alternates";
-    font-size: 10px;
-    font-weight: 500;
-    background-color: transparent;
-}
-
-.mobileMenuIcon {
-    margin-left: 5px;
-}
-
-.mobileMenuContainer {
-    position: absolute;
-    top: 50px;
-    left: -50px;
-    width: 100vw;
-    padding: 30px 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #E6E6E6;
-    outline: 1px solid red;
-}
-
-.headerList {}
-
-.headerItem {
-    color: #000;
-    font-family: "Montserrat Alternates";
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.headerItem:not(:last-child) {
-    margin-bottom: 25px;
+.headerList {
+    display: none;
 }
 
 .userContainer {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 15px;
+    display: none;
 }
 
-.button {
-    color: #000;
-    font-family: "Montserrat Alternates";
-    font-size: 10px;
-    font-weight: 400;
-
-    padding: 8px 16px;
-    border-radius: 10px;
-    background: #FFB36C;
-}
-
-.iconUser {
-    width: 40px;
-    height: 40px;
-    color: #556080;
-}
 
 @media screen and (min-width: 768px) {
-    .header {}
+    .header {
+        padding-top: 17px;
+        padding-bottom: 17px;
+    }
 
     .logo {
         width: 54px;
@@ -88,33 +36,64 @@
         display: flex;
         gap: 45px;
         align-items: center;
+        margin-right: 153px;
     }
 
     .headerItem {
         font-family: "Montserrat Alternates", sans-serif;
-        font-size: 12px;
-
+        font-size: 10px;
         font-weight: 500;
     }
 
-    .button {}
+    .userContainer {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
 
-    .iconUser {}
+    .button {
+        color: #000;
+        font-family: "Montserrat Alternates";
+        font-size: 10px;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 10px;
+        background: #FFB36C;
+    }
+
+    .iconUser {
+        width: 40px;
+        height: 40px;
+        color: #556080;
+    }
 }
 
 @media screen and (min-width: 1200px) {
-    .header {}
+    .header {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
 
     .logo {
         width: 82px;
         height: 56px;
     }
 
-    .headerList {}
+    .headerList {
+        margin-right: 400px;
+    }
 
-    .headerItem {}
+    .headerItem {
+        font-size: 12px;
+    }
 
-    .button {}
+    .button {
+        font-size: 12px;
+        padding: 10px 20px;
+    }
 
-    .iconUser {}
+    .iconUser {
+        width: 50px;
+        height: 50px;
+    }
 }
