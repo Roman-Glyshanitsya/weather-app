@@ -8,3 +8,11 @@
     background-repeat: no-repeat;
     color: #FFF;
 }
+
+.searchFormBtn {
+    width: 29px;
+    height: 27px;
+    border-radius: 0px 10px 10px 0px;
+    border-left: 2px solid #000;
+    background-color: #FFB36C;
+}
