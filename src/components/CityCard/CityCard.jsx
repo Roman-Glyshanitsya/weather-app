@@ -14,7 +14,7 @@ export const CityCard = ({ id, city, data, onDelete }) => {
   const description = data.current.weather?.[0]?.description;
 
   return (
-    <li className={s.cardItem}>
+    <li key={id} className={s.cardItem}>
       <div className={s.locationThumb}>
         <p>{city.name}</p>
         <p>{city.country}</p>

@@ -7,17 +7,12 @@ import { CityCardList } from './CityCardList/CityCardList';
 
 export const App = () => {
   const [query, setQuery] = useState('');
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('cities')) ?? [];
+  });
 
   useEffect(() => {
-    const saved = localStorage.getItem('cities');
-    if (saved) {
-      setCities(JSON.parse(saved));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('cities', JSON.stringify(cities));
+    window.localStorage.setItem('cities', JSON.stringify(cities));
   }, [cities]);
 
   const handleChange = e => setQuery(e.target.value);
@@ -29,7 +24,7 @@ export const App = () => {
       const weather = await fetchWeather(coords);
 
       const newCity = {
-        id: Date.now(), // або `${coords.name}-${coords.country}`
+        id: Date.now(),
         city: coords,
         data: weather,
       };
