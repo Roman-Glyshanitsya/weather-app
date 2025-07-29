@@ -1,4 +1,4 @@
-const API_KEY = '47664630924aaa0484d204a40a001832';
+const API_KEY = '40207e285e43c5b8e49ba7f2599cdd4b';
 const URL = 'https://api.openweathermap.org';
 
 // https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
