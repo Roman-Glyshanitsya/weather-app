@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import s from './Hero.module.css';
+import loupe from '../../images/loupe.png';
 
 export const Hero = ({ date = new Date(), query, onChange, onSubmit }) => {
   const line1 = format(date, 'MMMM yyyy'); // October 2023
@@ -9,14 +10,15 @@ export const Hero = ({ date = new Date(), query, onChange, onSubmit }) => {
     <section className={s.hero}>
       <h1 className={s.heroTitle}>Weather dashboard</h1>
       <div className={s.line}></div>
-      <p>
-        Create your personal list of favorite cities and always be aware of the
-        weather.
-      </p>
-      <p>
-        {line1} <br /> {line2}
-      </p>
-
+      <div className={s.textContainer}>
+        <p className={s.heroText}>
+          Create your personal list of favorite cities and always be aware of
+          the weather.
+        </p>
+        <p className={s.heroDate}>
+          {line1} <br /> {line2}
+        </p>
+      </div>
       <form className={s.searchForm} onSubmit={onSubmit}>
         <input
           className={s.searchFormInput}
@@ -28,7 +30,9 @@ export const Hero = ({ date = new Date(), query, onChange, onSubmit }) => {
           autoFocus
           placeholder="Search location..."
         />
-        <button type="submit" className={s.searchFormBtn}></button>
+        <button type="submit" className={s.searchFormBtn}>
+          <img src={loupe} alt="loupe" className={s.searchFormBtnImage} />
+        </button>
       </form>
     </section>
   );

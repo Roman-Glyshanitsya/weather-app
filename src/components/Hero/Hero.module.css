@@ -7,12 +7,192 @@
     background-position: center;
     background-repeat: no-repeat;
     color: #FFF;
+    padding-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.heroTitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+.textContainer {
+    border-left: 2px solid #FFF;
+    padding-left: 25px;
+    margin-bottom: 48px;
+
+}
+
+.heroText {
+    width: 136px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.heroDate {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.searchForm {
+    width: 174px;
+    height: 20px;
+
+    display: flex;
+}
+
+.searchFormInput {
+    border-radius: 5px 0 0 5px;
+    background-color: #D9D9D9;
+    padding: 4px 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.searchFormInput::placeholder {
+    color: #878787;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .searchFormBtn {
-    width: 29px;
-    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 3px 7px 3px 6px;
     border-radius: 0px 10px 10px 0px;
     border-left: 2px solid #000;
     background-color: #FFB36C;
+}
+
+.searchFormBtnImage {
+    width: 10px;
+    height: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .hero {
+        padding-top: 40px;
+    }
+
+    .heroTitle {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    .textContainer {
+        border-left: none;
+        padding-left: 0;
+        margin-bottom: 64px;
+
+        display: flex;
+        gap: 34px;
+
+    }
+
+    .heroText {
+        width: 172px;
+        font-size: 14px;
+        text-align: right;
+        margin-bottom: 0;
+    }
+
+    .heroDate {
+        display: flex;
+        gap: 34px;
+        font-size: 14px;
+    }
+
+    .heroDate::before {
+        content: '';
+        display: block;
+        top: 0;
+        width: 2px;
+        height: 110px;
+        background-color: #FFF;
+    }
+
+    .searchForm {
+        width: 402px;
+        height: 27px;
+    }
+
+    .searchFormInput {
+        border-radius: 10px 0 0 10px;
+        padding: 7px 19px;
+    }
+
+    .searchFormInput::placeholder {
+        font-size: 14px;
+    }
+
+    .searchFormBtn {
+        padding: 6px 7px 5px 7px;
+        border-radius: 0px 10px 10px 0px;
+        border-left: 2px solid #000;
+        background-color: #FFB36C;
+    }
+
+    .searchFormBtnImage {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .hero {
+        height: 595px;
+        padding-top: 100px;
+    }
+
+    .heroTitle {
+        font-size: 40px;
+        margin-bottom: 80px;
+    }
+
+    .textContainer {
+        margin-bottom: 80px;
+        gap: 52px;
+    }
+
+    .heroText {
+        width: 345px;
+        font-size: 24px;
+    }
+
+    .heroDate {
+        gap: 52px;
+        font-size: 24px;
+    }
+
+    .heroDate::before {
+        width: 3px;
+        height: 144px;
+    }
+
+    .searchForm {
+        width: 625px;
+        height: 42px;
+    }
+
+    .searchFormInput::placeholder {
+        font-size: 16px;
+    }
+
+    .searchFormBtn {
+        padding: 9px 10px;
+    }
+
+    .searchFormBtnImage {
+        width: 25px;
+        height: 25px;
+    }
 }

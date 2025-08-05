@@ -1,17 +1,5 @@
-const API_KEY = '40207e285e43c5b8e49ba7f2599cdd4b';
+const API_KEY = 'ca96fbe0dc146527971a35a7deb6d0d7';
 const URL = 'https://api.openweathermap.org';
-
-// https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
-// export const fetchWeather = async query => {
-//   const response = await fetch(
-//     `${URL}/weather?q=${query}&units=metric&appid={KEY}`
-//   );
-//   if (response.ok) {
-//     return response.json();
-//   }
-//   return await Promise.reject(new Error());
-// };
 
 // 1. Отримати координати міста
 export const fetchCoordinates = async city => {
@@ -29,10 +17,8 @@ export const fetchCoordinates = async city => {
 };
 
 // 2. Отримати погоду по координатах
-export const fetchWeather = async ({ lat, lon }) => {
-  const response = await fetch(
-    `${URL}/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
-  );
-  const data = await response.json();
-  return data;
+export const fetchWeather = ({ lat, lon }) => {
+  return fetch(
+    `${URL}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+  ).then(response => response.json());
 };

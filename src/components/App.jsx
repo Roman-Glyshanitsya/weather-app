@@ -20,8 +20,12 @@ export const App = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
+      console.log('🔍 Відправка запиту на координати для міста:', query);
       const coords = await fetchCoordinates(query);
+      console.log('✅ Отримані координати:', coords);
+
       const weather = await fetchWeather(coords);
+      console.log('✅ Отримані погодні дані:', weather);
 
       const newCity = {
         id: Date.now(),
@@ -39,9 +43,11 @@ export const App = () => {
         return;
       }
 
+      console.log('🆕 Додаємо нове місто в список:', newCity);
       setCities(prev => [newCity, ...prev]);
       setQuery('');
     } catch (error) {
+      console.error('❌ Помилка при отриманні даних:', error.message);
       alert(error.message);
     }
   };
@@ -53,10 +59,14 @@ export const App = () => {
   };
 
   return (
-    <Container>
-      <Header />
+    <>
+      <Container>
+        <Header />
+      </Container>
       <Hero query={query} onChange={handleChange} onSubmit={handleSubmit} />
-      <CityCardList cities={cities} onDelete={handleDelete} />
-    </Container>
+      <Container>
+        <CityCardList cities={cities} onDelete={handleDelete} />
+      </Container>
+    </>
   );
 };

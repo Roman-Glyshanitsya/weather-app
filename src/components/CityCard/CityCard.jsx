@@ -5,9 +5,9 @@ import likeIcon from '../../images/heart.png';
 import deleteIcon from '../../images/delete.png';
 
 export const CityCard = ({ id, city, data, onDelete }) => {
-  // if (!data?.current || !city) {
-  //   return <li>Loading weather data...</li>;
-  // }
+  if (!data?.current || !city) {
+    return <li>Loading weather data...</li>;
+  }
 
   const dt = new Date(data.current.dt * 1000);
   const icon = data.current.weather?.[0]?.icon;
