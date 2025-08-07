@@ -1,4 +1,4 @@
-const API_KEY = 'ca96fbe0dc146527971a35a7deb6d0d7';
+const API_KEY = '648044566c39bf22b328b156e9811802';
 const URL = 'https://api.openweathermap.org';
 
 // 1. Отримати координати міста

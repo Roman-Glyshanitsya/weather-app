@@ -4,28 +4,39 @@ import Container from './Container/Container';
 import { Header } from './Header/Header';
 import { Hero } from './Hero/Hero';
 import { CityCardList } from './CityCardList/CityCardList';
+import { WeatherDetails } from './WeatherDetails/WeatherDetails';
 
 export const App = () => {
   const [query, setQuery] = useState('');
   const [cities, setCities] = useState(() => {
     return JSON.parse(window.localStorage.getItem('cities')) ?? [];
   });
+  const [expandedCityData, setExpandedCityData] = useState(null);
 
   useEffect(() => {
     window.localStorage.setItem('cities', JSON.stringify(cities));
   }, [cities]);
+
+  const handleExpand = cityObj => {
+    // Якщо вже вибрано це місто — ховаємо
+    if (expandedCityData?.id === cityObj.id) {
+      setExpandedCityData(null);
+    } else {
+      setExpandedCityData(cityObj);
+    }
+  };
 
   const handleChange = e => setQuery(e.target.value);
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      console.log('🔍 Відправка запиту на координати для міста:', query);
+      // console.log('🔍 Відправка запиту на координати для міста:', query);
       const coords = await fetchCoordinates(query);
-      console.log('✅ Отримані координати:', coords);
+      // console.log('✅ Отримані координати:', coords);
 
       const weather = await fetchWeather(coords);
-      console.log('✅ Отримані погодні дані:', weather);
+      // console.log('✅ Отримані погодні дані:', weather);
 
       const newCity = {
         id: Date.now(),
@@ -43,7 +54,7 @@ export const App = () => {
         return;
       }
 
-      console.log('🆕 Додаємо нове місто в список:', newCity);
+      // console.log('🆕 Додаємо нове місто в список:', newCity);
       setCities(prev => [newCity, ...prev]);
       setQuery('');
     } catch (error) {
@@ -65,7 +76,17 @@ export const App = () => {
       </Container>
       <Hero query={query} onChange={handleChange} onSubmit={handleSubmit} />
       <Container>
-        <CityCardList cities={cities} onDelete={handleDelete} />
+        <CityCardList
+          cities={cities}
+          onDelete={handleDelete}
+          onExpand={handleExpand}
+        />
+        {expandedCityData && (
+          <WeatherDetails
+            city={expandedCityData.city}
+            data={expandedCityData.data}
+          />
+        )}
       </Container>
     </>
   );

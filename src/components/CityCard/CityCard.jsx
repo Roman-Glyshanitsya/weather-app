@@ -4,14 +4,14 @@ import refreshIcon from '../../images/refresh.png';
 import likeIcon from '../../images/heart.png';
 import deleteIcon from '../../images/delete.png';
 
-export const CityCard = ({ id, city, data, onDelete }) => {
-  if (!data?.current || !city) {
+export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
+  if (!data || !city) {
     return <li>Loading weather data...</li>;
   }
 
-  const dt = new Date(data.current.dt * 1000);
-  const icon = data.current.weather?.[0]?.icon;
-  const description = data.current.weather?.[0]?.description;
+  const dt = new Date(data.dt * 1000);
+  const icon = data.weather?.[0]?.icon;
+  const description = data.weather?.[0]?.description;
 
   return (
     <li key={id} className={s.cardItem}>
@@ -38,7 +38,7 @@ export const CityCard = ({ id, city, data, onDelete }) => {
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt={description}
       />
-      <p className={s.temp}>{Math.round(data.current.temp)}℃</p>
+      <p className={s.temp}>{Math.round(data.main.temp)}℃</p>
       <div className={s.footerBtnsThumb}>
         <button type="button" className={s.refreshBtn}>
           <img src={refreshIcon} alt="refresh" />
@@ -46,7 +46,7 @@ export const CityCard = ({ id, city, data, onDelete }) => {
         <button type="button" className={s.likeBtn}>
           <img src={likeIcon} alt="refresh" />
         </button>
-        <button type="button" className={s.moreBtn}>
+        <button type="button" className={s.moreBtn} onClick={onExpand}>
           See more
         </button>
         <button type="button" className={s.deleteBtn}>
