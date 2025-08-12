@@ -1,21 +1,15 @@
-const BASE_URL = `https://newsapi.org/v2`;
-const API_KEY = '47b7b741c585484186f858c67f55d031';
+const BASE_URL = 'https://gnews.io/api/v4';
+const API_KEY = '403f50e2c930ed07458262c721a12b6c';
 
-export default function fetchNews(
-  query = 'pets',
-  pageSize = 4,
-  language = 'en'
-) {
+export default function fetchNews(query = 'pets', max = 4, lang = 'en') {
   return fetch(
-    `${BASE_URL}/everything?q=${query}&pageSize=${pageSize}&language=${language}&sortBy=publishedAt&apiKey=${API_KEY}`
+    `${BASE_URL}/search?q=${encodeURIComponent(
+      query
+    )}&lang=${lang}&max=${max}&sortby=publishedAt&apikey=${API_KEY}`
   )
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(new Error());
+    .then(res => {
+      if (!res.ok) throw new Error('Network error');
+      return res.json();
     })
-    .then(data => {
-      return data.articles;
-    });
+    .then(data => data.articles);
 }
