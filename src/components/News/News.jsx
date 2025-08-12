@@ -4,18 +4,16 @@ import fetchNews from '../../services/newsApi';
 
 export default function News() {
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
-    fetchNews('pets OR animals OR dogs OR cats OR wildlife', 4, 'en', page)
-      .then(newArticles => {
-        setArticles(prev => [...prev, ...newArticles]);
-      })
+    fetchNews('pets OR animals OR dogs OR cats OR wildlife', 10, 'en')
+      .then(setArticles)
       .catch(console.error);
-  }, [page]);
+  }, []);
 
   const handleSeeMore = () => {
-    setPage(prev => prev + 1);
+    setVisibleCount(prev => prev + 4);
   };
 
   return (
@@ -23,7 +21,7 @@ export default function News() {
       <h2 className={css.news__title}>Interacting with our pets</h2>
 
       <ul className={css.news__list}>
-        {articles.map((article, index) => (
+        {articles.slice(0, visibleCount).map((article, index) => (
           <li key={index} className={css.news__item}>
             {article.image && (
               <img

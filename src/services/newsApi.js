@@ -1,9 +1,9 @@
-const BASE_URL = 'https://gnews.io/api/v4';
 const API_KEY = '403f50e2c930ed07458262c721a12b6c';
+const BASE_URL = 'https://gnews.io/api/v4';
 
 export default function fetchNews(
   query = 'pets',
-  max = 4,
+  max = 10,
   lang = 'en',
   page = 1
 ) {
