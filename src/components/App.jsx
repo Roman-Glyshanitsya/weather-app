@@ -5,6 +5,7 @@ import { Header } from './Header/Header';
 import { Hero } from './Hero/Hero';
 import { CityCardList } from './CityCardList/CityCardList';
 import { WeatherDetails } from './WeatherDetails/WeatherDetails';
+import News from './News/News';
 
 export const App = () => {
   const [query, setQuery] = useState('');
@@ -87,6 +88,7 @@ export const App = () => {
             data={expandedCityData.data}
           />
         )}
+        <News />
       </Container>
     </>
   );
