@@ -23,7 +23,8 @@ export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
         className={s.icon}
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt={description}
-      /> */}
+        /> */}
+      <p className={s.time}>{description}</p>
       <p className={s.temp}>{Math.round(data.main.temp)}℃</p>
       <button type="button" className={s.moreBtn} onClick={onExpand}>
         See more
