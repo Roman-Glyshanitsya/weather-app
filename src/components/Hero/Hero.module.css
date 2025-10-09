@@ -1,18 +1,11 @@
 .hero {
-    height: 345px;
     width: 100%;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.48),
-            rgba(0, 0, 0, 0.48)), url('../../images/hero.jpg'); */
-    background-color: black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: #FFF;
-
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .heroTitle {
