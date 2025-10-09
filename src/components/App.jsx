@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchCoordinates, fetchWeather } from '../services/weatherApi';
 import Container from './Container/Container';
-import { Header } from './Header/Header';
 import { Hero } from './Hero/Hero';
 import { CityCardList } from './CityCardList/CityCardList';
 import { WeatherDetails } from './WeatherDetails/WeatherDetails';
-import News from './News/News';
 
 export const App = () => {
   const [query, setQuery] = useState('');
@@ -72,9 +70,6 @@ export const App = () => {
 
   return (
     <>
-      <Container>
-        <Header />
-      </Container>
       <Hero query={query} onChange={handleChange} onSubmit={handleSubmit} />
       <Container>
         <CityCardList
@@ -88,7 +83,6 @@ export const App = () => {
             data={expandedCityData.data}
           />
         )}
-        <News />
       </Container>
     </>
   );
