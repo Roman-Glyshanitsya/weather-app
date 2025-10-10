@@ -8,7 +8,7 @@ export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
   }
 
   const localTime = new Date((data.dt + data.timezone) * 1000);
-  const icon = data.weather?.[0]?.icon;
+  // const icon = data.weather?.[0]?.icon;
   const description = data.weather?.[0]?.description;
 
   return (
