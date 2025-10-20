@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import s from './CityCard.module.css';
-import deleteIcon from '../../images/delete.png';
+import deleteIcon from '../../images/closeIcon.png';
 
 export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
   if (!data || !city) {
@@ -12,25 +12,28 @@ export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
   const description = data.weather?.[0]?.description;
 
   return (
-    <li key={id} className={s.cardItem}>
-      <div>
-        <p className={s.cityName}>
-          {city.name}, {city.country}
-        </p>
-        <p className={s.time}>{format(localTime, 'HH:mm')}</p>
-      </div>
-      {/* <img
-        className={s.icon}
-        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt={description}
-        /> */}
-      <p className={s.temp}>{Math.round(data.main.temp)}℃</p>
-      <p className={s.time}>{description}</p>
-      <button type="button" className={s.moreBtn} onClick={onExpand}>
-        See more
-      </button>
+    <li key={id} className={s.cardItem} onClick={onExpand}>
       <button type="button" className={s.deleteBtn}>
         <img src={deleteIcon} alt="refresh" onClick={() => onDelete(id)} />
+      </button>
+      <div className={s.locationThumb}>
+        <div>
+          <p className={s.cityName}>
+            {city.name}, {city.country}
+          </p>
+          <p className={s.time}>{format(localTime, 'HH:mm')}</p>
+        </div>
+        <p className={s.temp}>{Math.round(data.main.temp)}&deg;</p>
+      </div>
+      <div className={s.footerThumb}>
+        <p className={s.description}>{description}</p>
+        <div className={s.tempThumb}>
+          <p>H:{Math.round(data.main.temp_max)}&deg;</p>
+          <p>L:{Math.round(data.main.temp_min)}&deg;</p>
+        </div>
+      </div>
+      <button type="button" className={s.moreBtn}>
+        See more
       </button>
     </li>
   );
