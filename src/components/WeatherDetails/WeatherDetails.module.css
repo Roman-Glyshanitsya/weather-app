@@ -5,13 +5,12 @@
     z-index: 10;
     width: 100%;
     background:
-        url('../../images/night-clouds.png'),
-        url('../../images/night-stars.png'),
-        linear-gradient(180deg, #121923 0%, #2b3142 100%);
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: contain, contain, cover;
-    background-position: top, top, center;
+        url('../../images/night-clouds.png') top/contain no-repeat,
+        url('../../images/night-stars.png') top/contain no-repeat,
+        linear-gradient(180deg, #0d121a 50%, #2b3142 100%);
     padding: 40px 77px;
+
+    pointer-events: none;
 }
 
 .detailsList {
