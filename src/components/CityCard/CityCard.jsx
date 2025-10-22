@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 import s from './CityCard.module.css';
 import deleteIcon from '../../images/closeIcon.png';
 
