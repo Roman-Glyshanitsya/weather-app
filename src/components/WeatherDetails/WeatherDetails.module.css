@@ -1,7 +1,16 @@
 .detailsContainer {
-    max-width: 1140px;
-    border-radius: 20px;
-    background-color: #E8E8E8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    background:
+        url('../../images/night-clouds.png'),
+        url('../../images/night-stars.png'),
+        linear-gradient(180deg, #121923 0%, #2b3142 100%);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: contain, contain, cover;
+    background-position: top, top, center;
     padding: 40px 77px;
 }
 
