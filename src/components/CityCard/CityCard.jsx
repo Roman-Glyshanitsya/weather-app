@@ -29,8 +29,12 @@ export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
 
   return (
     <li key={id} className={s.cardItem}>
-      <button type="button" className={s.deleteBtn}>
-        <img src={deleteIcon} alt="refresh" onClick={() => onDelete(id)} />
+      <button
+        type="button"
+        className={s.deleteBtn}
+        onClick={() => onDelete(id)}
+      >
+        <img src={deleteIcon} alt="refresh" />
       </button>
       <div onClick={onExpand}>
         <div className={s.locationThumb}>

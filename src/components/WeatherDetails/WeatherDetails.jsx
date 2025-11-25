@@ -1,4 +1,5 @@
-import tempIcon from '../../images/temp.png';
+import tempNameIcon from '../../images/1-temp-icon.png';
+import tempSunriseIcon from '../../images/1-sunrise-icon.png';
 import humidityIcon from '../../images/humidity.png';
 import pressureIcon from '../../images/pressure.png';
 import windIcon from '../../images/wind.png';
@@ -13,13 +14,42 @@ export const WeatherDetails = ({ city, data }) => {
   const windSpeed = data.wind?.speed;
   const visibility = data.visibility;
 
+  const description = data.weather?.[0]?.description;
+
   return (
     <div className={s.detailsContainer}>
+      <p className={s.cityName}>{city.name}</p>
+      <p className={s.cityTemp}>
+        {Math.round(data.main.temp)}&deg; | {description}
+      </p>
+      <p className={s.detailsName}>
+        <img src={tempNameIcon} alt="tempNameIcon" className={s.tempNameIcon} />
+        Temperature
+      </p>
       <ul className={s.detailsList}>
         <li className={s.detailItem}>
-          <p className={s.detailItemText}>Feels like</p>
+          <p className={s.detailItemTitle}>
+            {' '}
+            <img
+              src={tempNameIcon}
+              alt="tempNameIcon"
+              className={s.tempNameIcon}
+            />{' '}
+            Feels like
+          </p>
           <p className={s.detailItemData}>{Math.round(feels_like)}℃</p>
-          <img src={tempIcon} alt="tempIcon" className={s.detailItemImage} />
+        </li>
+        <li className={s.detailItem}>
+          <p className={s.detailItemTitle}>
+            {' '}
+            <img
+              src={tempSunriseIcon}
+              alt="tempSunriseIcon"
+              className={s.tempSunriseIcon}
+            />{' '}
+            sunrise
+          </p>
+          <p className={s.detailItemData}>6:28AM</p>
         </li>
         <li className={s.detailItem}>
           <p className={s.detailItemText}>Min ℃</p>
