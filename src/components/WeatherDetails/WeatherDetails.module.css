@@ -68,12 +68,11 @@
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 .detailItem {
     width: 162px;
-    height: 162px;
     border: 0.5px solid rgba(255, 255, 255, 0.25);
     padding: 12px 17px;
     border-radius: 15px;

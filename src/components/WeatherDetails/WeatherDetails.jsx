@@ -1,11 +1,13 @@
 import tempNameIcon from '../../images/1-temp-icon.png';
 import tempSunriseIcon from '../../images/1-sunrise-icon.png';
+import closeIcon from '../../images/closeIcon.png';
+import sunriseSunsetIcon from '../../images/sunrise-sunset.png';
+
 import humidityIcon from '../../images/humidity.png';
 import pressureIcon from '../../images/pressure.png';
 import windIcon from '../../images/wind.png';
 import visibilityIcon from '../../images/visibility.png';
-import closeIcon from '../../images/closeIcon.png';
-import sunriseSunsetIcon from '../../images/sunrise-sunset.png';
+
 import s from './WeatherDetails.module.css';
 
 export const WeatherDetails = ({ city, data }) => {
@@ -13,9 +15,11 @@ export const WeatherDetails = ({ city, data }) => {
 
   const { feels_like, temp_min, temp_max, humidity, pressure } = data.main;
 
+  // weatherIcon
   const iconCode = data.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
+  // Sunrise and Sunset time
   function convertUnixToTime(unix, timezoneOffset) {
     const localTime = (unix + timezoneOffset) * 1000;
     const date = new Date(localTime);
@@ -33,13 +37,11 @@ export const WeatherDetails = ({ city, data }) => {
   const sunriseTime = convertUnixToTime(sunriseUnix, timezone);
   const sunsetTime = convertUnixToTime(sunsetUnix, timezone);
 
-  console.log('Sunrise:', sunriseTime);
-  console.log('Sunset:', sunsetTime);
-  console.log('timezone:', timezone);
-
+  // Wind speed
   const windSpeed = data.wind?.speed;
   const visibility = data.visibility;
 
+  // Weather description
   const description = data.weather?.[0]?.description;
 
   return (
@@ -87,12 +89,12 @@ export const WeatherDetails = ({ city, data }) => {
           />
           <p className={s.detailItemText}>Sunset: {sunsetTime}</p>
         </li>
-        <li className={s.detailItem}>
+        {/* <li className={s.detailItem}>
           <p className={s.detailItemText}>Min ℃</p>
           <p className={s.detailItemData}>{Math.round(temp_min)}℃</p>
           <p className={s.detailItemText}>Max ℃</p>
           <p className={s.detailItemData}>{Math.round(temp_max)}℃</p>
-        </li>
+        </li> */}
         <li className={s.detailItem}>
           <p className={s.detailItemText}>Humidity</p>
           <p className={s.detailItemData}>{humidity}%</p>
