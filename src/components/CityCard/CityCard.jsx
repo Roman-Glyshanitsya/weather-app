@@ -8,16 +8,12 @@ export const CityCard = ({ id, city, data, onDelete, onExpand }) => {
   }
 
   // отримуємо локальний час міста (рядок "HH:MM")
-  function formatCityLocalTime(dtSeconds, tzOffsetSeconds) {
-    // момент у секундах для локального часу міста: UTC + tzOffset
-    const totalSeconds = dtSeconds + tzOffsetSeconds;
+  function formatCityLocalTime(unix, timezoneOffset) {
+    const localTime = (unix + timezoneOffset) * 1000;
+    const date = new Date(localTime);
 
-    // створюємо Date від цього моменту (він буде інтерпретований як UTC момент)
-    const d = new Date(totalSeconds * 1000);
-
-    // читаємо час в UTC — це і буде локальний час міста
-    const hours = String(d.getUTCHours()).padStart(2, '0');
-    const minutes = String(d.getUTCMinutes()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
 
     return `${hours}:${minutes}`;
   }

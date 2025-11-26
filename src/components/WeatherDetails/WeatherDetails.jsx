@@ -5,6 +5,7 @@ import pressureIcon from '../../images/pressure.png';
 import windIcon from '../../images/wind.png';
 import visibilityIcon from '../../images/visibility.png';
 import closeIcon from '../../images/closeIcon.png';
+import sunriseSunsetIcon from '../../images/sunrise-sunset.png';
 import s from './WeatherDetails.module.css';
 
 export const WeatherDetails = ({ city, data }) => {
@@ -15,21 +16,26 @@ export const WeatherDetails = ({ city, data }) => {
   const iconCode = data.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-  function convertUnixToTime(unix) {
-    const date = new Date(unix * 1000);
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+  function convertUnixToTime(unix, timezoneOffset) {
+    const localTime = (unix + timezoneOffset) * 1000;
+    const date = new Date(localTime);
+
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
     return `${hours}:${minutes}`;
   }
 
   const sunriseUnix = data.sys.sunrise;
   const sunsetUnix = data.sys.sunset;
+  const timezone = data.timezone;
 
-  const sunriseTime = convertUnixToTime(sunriseUnix);
-  const sunsetTime = convertUnixToTime(sunsetUnix);
+  const sunriseTime = convertUnixToTime(sunriseUnix, timezone);
+  const sunsetTime = convertUnixToTime(sunsetUnix, timezone);
 
   console.log('Sunrise:', sunriseTime);
   console.log('Sunset:', sunsetTime);
+  console.log('timezone:', timezone);
 
   const windSpeed = data.wind?.speed;
   const visibility = data.visibility;
@@ -73,7 +79,13 @@ export const WeatherDetails = ({ city, data }) => {
             />{' '}
             sunrise
           </p>
-          <p className={s.detailItemData}>6:28AM</p>
+          <p className={s.detailItemData}>{sunriseTime}</p>
+          <img
+            src={sunriseSunsetIcon}
+            alt="icon"
+            className={s.sunriseSunsetIcon}
+          />
+          <p className={s.detailItemText}>Sunset: {sunsetTime}</p>
         </li>
         <li className={s.detailItem}>
           <p className={s.detailItemText}>Min ℃</p>
