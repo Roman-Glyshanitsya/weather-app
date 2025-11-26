@@ -25,6 +25,8 @@ export const App = () => {
     }
   };
 
+  const handleWeatherDetailsClose = () => {};
+
   const handleChange = e => setQuery(e.target.value);
 
   const handleSubmit = async e => {
@@ -79,6 +81,7 @@ export const App = () => {
         />
         {expandedCityData && (
           <WeatherDetails
+            onButtonClose={WeatherDetails}
             city={expandedCityData.city}
             data={expandedCityData.data}
           />

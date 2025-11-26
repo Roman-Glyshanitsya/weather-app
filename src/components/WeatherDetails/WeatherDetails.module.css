@@ -8,10 +8,14 @@
     background:
         url('../../images/night-clouds.png') top/contain no-repeat,
         url('../../images/night-stars.png') top/contain no-repeat,
-        linear-gradient(180deg, #0d121a 50%, #2b3142 100%);
+        linear-gradient(180deg, #0d121a 470px, #2b3142 100%);
     padding-top: 40px;
 
     pointer-events: auto;
+}
+
+.closeButton {
+    background-color: transparent;
 }
 
 .cityName {
@@ -99,9 +103,11 @@
     font-weight: 400;
     line-height: 42px;
     letter-spacing: 0%;
-    text-align: left;
+    text-align: center;
 }
 
-.detailItemImage {
+.weatherIcon {
+    width: 70px;
+    height: 70px;
     margin: 0 auto;
 }

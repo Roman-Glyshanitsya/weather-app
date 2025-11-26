@@ -4,12 +4,32 @@ import humidityIcon from '../../images/humidity.png';
 import pressureIcon from '../../images/pressure.png';
 import windIcon from '../../images/wind.png';
 import visibilityIcon from '../../images/visibility.png';
+import closeIcon from '../../images/closeIcon.png';
 import s from './WeatherDetails.module.css';
 
 export const WeatherDetails = ({ city, data }) => {
   if (!city || !data) return null;
 
   const { feels_like, temp_min, temp_max, humidity, pressure } = data.main;
+
+  const iconCode = data.weather[0].icon;
+  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+  function convertUnixToTime(unix) {
+    const date = new Date(unix * 1000);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  }
+
+  const sunriseUnix = data.sys.sunrise;
+  const sunsetUnix = data.sys.sunset;
+
+  const sunriseTime = convertUnixToTime(sunriseUnix);
+  const sunsetTime = convertUnixToTime(sunsetUnix);
+
+  console.log('Sunrise:', sunriseTime);
+  console.log('Sunset:', sunsetTime);
 
   const windSpeed = data.wind?.speed;
   const visibility = data.visibility;
@@ -18,6 +38,9 @@ export const WeatherDetails = ({ city, data }) => {
 
   return (
     <div className={s.detailsContainer}>
+      <button type="button" className={s.closeButton}>
+        <img src={closeIcon} alt="close icon" />
+      </button>
       <p className={s.cityName}>{city.name}</p>
       <p className={s.cityTemp}>
         {Math.round(data.main.temp)}&deg; | {description}
@@ -38,6 +61,7 @@ export const WeatherDetails = ({ city, data }) => {
             Feels like
           </p>
           <p className={s.detailItemData}>{Math.round(feels_like)}℃</p>
+          <img src={iconUrl} alt="icon" className={s.weatherIcon} />
         </li>
         <li className={s.detailItem}>
           <p className={s.detailItemTitle}>
