@@ -25,7 +25,7 @@ export const App = () => {
     }
   };
 
-  const handleWeatherDetailsClose = () => {};
+  // const handleWeatherDetailsClose = () => {};
 
   const handleChange = e => setQuery(e.target.value);
 
