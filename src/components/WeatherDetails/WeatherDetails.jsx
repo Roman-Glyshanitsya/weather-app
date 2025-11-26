@@ -13,7 +13,7 @@ import s from './WeatherDetails.module.css';
 export const WeatherDetails = ({ city, data }) => {
   if (!city || !data) return null;
 
-  const { feels_like, temp_min, temp_max, humidity, pressure } = data.main;
+  const { feels_like, humidity, pressure } = data.main;
 
   // weatherIcon
   const iconCode = data.weather[0].icon;
