@@ -1,19 +1,16 @@
 import tempNameIcon from '../../images/1-temp-icon.png';
 import tempSunriseIcon from '../../images/1-sunrise-icon.png';
+import humidityIcon from '../../images/1-humidity-icon.png';
 import closeIcon from '../../images/closeIcon.png';
 import sunriseSunsetIcon from '../../images/sunrise-sunset.png';
-
-import humidityIcon from '../../images/humidity.png';
-import pressureIcon from '../../images/pressure.png';
-import windIcon from '../../images/wind.png';
-import visibilityIcon from '../../images/visibility.png';
-
+import visibilityIcon from '../../images/1-visibility-icon.png';
+import windIcon from '../../images/1-wind-icon.png';
 import s from './WeatherDetails.module.css';
 
 export const WeatherDetails = ({ city, data }) => {
   if (!city || !data) return null;
 
-  const { feels_like, humidity, pressure } = data.main;
+  const { feels_like, humidity } = data.main;
 
   // weatherIcon
   const iconCode = data.weather[0].icon;
@@ -89,43 +86,42 @@ export const WeatherDetails = ({ city, data }) => {
           />
           <p className={s.detailItemText}>Sunset: {sunsetTime}</p>
         </li>
-        {/* <li className={s.detailItem}>
-          <p className={s.detailItemText}>Min ℃</p>
-          <p className={s.detailItemData}>{Math.round(temp_min)}℃</p>
-          <p className={s.detailItemText}>Max ℃</p>
-          <p className={s.detailItemData}>{Math.round(temp_max)}℃</p>
-        </li> */}
         <li className={s.detailItem}>
-          <p className={s.detailItemText}>Humidity</p>
+          <p className={s.detailItemTitle}>
+            {' '}
+            <img
+              src={humidityIcon}
+              alt="humidityIcon"
+              className={s.tempSunriseIcon}
+            />{' '}
+            humidity
+          </p>
           <p className={s.detailItemData}>{humidity}%</p>
-          <img
-            src={humidityIcon}
-            alt="humidityIcon"
-            className={s.detailItemImage}
-          />
         </li>
         <li className={s.detailItem}>
-          <p className={s.detailItemText}>Pressure</p>
-          <p className={s.detailItemData}>{pressure} Pa</p>
-          <img
-            src={pressureIcon}
-            alt="pressureIcon"
-            className={s.detailItemImage}
-          />
-        </li>
-        <li className={s.detailItem}>
-          <p className={s.detailItemText}>Wind speed</p>
-          <p className={s.detailItemData}>{windSpeed} m/s</p>
-          <img src={windIcon} alt="windIcon" className={s.detailItemImage} />
-        </li>
-        <li className={s.detailItem}>
-          <p className={s.detailItemText}>Visibility</p>
+          <p className={s.detailItemTitle}>
+            {' '}
+            <img
+              src={visibilityIcon}
+              alt="visibilityIcon"
+              className={s.tempNameIcon}
+            />{' '}
+            visibility
+          </p>
           <p className={s.detailItemData}>{visibility / 1000} km</p>
-          <img
-            src={visibilityIcon}
-            alt="visibilityIcon"
-            className={s.detailItemImage}
-          />
+        </li>
+        <li className={s.detailItem}>
+          <p className={s.detailItemTitle}>
+            {' '}
+            <img
+              src={windIcon}
+              alt="windIcon"
+              className={s.tempSunriseIcon}
+            />{' '}
+            wind
+          </p>
+          <p className={s.detailItemText}>Wind {windSpeed} m/s</p>
+          <p className={s.detailItemText}>Напрямок {windSpeed} m/s</p>
         </li>
       </ul>
     </div>

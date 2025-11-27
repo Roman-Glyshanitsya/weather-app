@@ -59,7 +59,7 @@
 
 .tempNameIcon {
     width: 14px;
-    height: 20px;
+    height: auto;
 }
 
 
@@ -78,6 +78,10 @@
     border-radius: 15px;
     backdrop-filter: blur(4px);
     background: rgba(45, 51, 64, 0.2);
+}
+
+.detailItem:last-child {
+    width: 335px;
 }
 
 .detailItemTitle {
@@ -100,7 +104,6 @@
     font-size: 35px;
     font-weight: 400;
     line-height: 42px;
-    letter-spacing: 0%;
     text-align: center;
 }
 
