@@ -5,6 +5,7 @@ import closeIcon from '../../images/closeIcon.png';
 import sunriseSunsetIcon from '../../images/sunrise-sunset.png';
 import visibilityIcon from '../../images/1-visibility-icon.png';
 import windIcon from '../../images/1-wind-icon.png';
+import compassImage from '../../images/compass.png';
 import s from './WeatherDetails.module.css';
 
 export const WeatherDetails = ({ city, data }) => {
@@ -37,6 +38,23 @@ export const WeatherDetails = ({ city, data }) => {
   // Wind speed
   const windSpeed = data.wind?.speed;
   const visibility = data.visibility;
+
+  // Wind Direction
+  const windDeg = data.wind?.deg;
+  const windDir = getWindDirection(windDeg);
+
+  function getWindDirection(deg) {
+    if (deg >= 337.5 || deg < 22.5) return 'N';
+    if (deg >= 22.5 && deg < 67.5) return 'NE';
+    if (deg >= 67.5 && deg < 112.5) return 'E';
+    if (deg >= 112.5 && deg < 157.5) return 'SE';
+    if (deg >= 157.5 && deg < 202.5) return 'S';
+    if (deg >= 202.5 && deg < 247.5) return 'SW';
+    if (deg >= 247.5 && deg < 292.5) return 'W';
+    if (deg >= 292.5 && deg < 337.5) return 'NW';
+  }
+
+  const arrowRotation = windDeg + 180;
 
   // Weather description
   const description = data.weather?.[0]?.description;
@@ -120,8 +138,26 @@ export const WeatherDetails = ({ city, data }) => {
             />{' '}
             wind
           </p>
-          <p className={s.detailItemText}>Wind {windSpeed} m/s</p>
-          <p className={s.detailItemText}>Напрямок {windSpeed} m/s</p>
+          <div className={s.windDirectionThumb}>
+            <div className={s.windDirectionText}>
+              <p className={s.detailItemText}>Wind: {windSpeed} m/s</p>
+              <p className={s.detailItemText}>
+                Direction: {windDeg}° {windDir}
+              </p>
+            </div>
+            <div className={s.compassWrapper}>
+              <img
+                src={compassImage}
+                alt="compass"
+                className={s.compassImage}
+              />
+              {/* Arrow */}
+              <div
+                className={s.arrow}
+                style={{ transform: `rotate(${arrowRotation}deg)` }}
+              />
+            </div>
+          </div>
         </li>
       </ul>
     </div>
